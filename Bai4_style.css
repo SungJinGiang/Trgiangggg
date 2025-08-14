@@ -1,0 +1,81 @@
+/* Bai4_style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Sử dụng Flexbox để căn chỉnh các phần tử trên cùng một hàng */
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.input-group input[type="text"] {
+    flex-grow: 1; /* Cho phép các input giãn ra để lấp đầy không gian */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
+.result-box {
+    margin-top: 20px;
+}
+
+.result-box p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.result-box strong {
+    color: #555;
+}
