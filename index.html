@@ -1,65 +1,167 @@
 <?php
-// index.php - Menu kết nối 4 bài tập
+// index.php - Menu kết nối bài tập theo tuần
 ?>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Menu Bài Tập PHP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #74ABE2, #5563DE);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <title>Menu Bài Tập PHP</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-        .menu {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 300px;
-        }
+    /* Bảng thông báo kiểu glass */
+    .menu {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 30px 40px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      width: 420px;
+      position: relative;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
 
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .menu:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
 
-        a {
-            display: block;
-            padding: 12px;
-            margin: 10px 0;
-            background: #5563DE;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
+    /* Tiêu đề */
+    .menu::before {
+      content: "📢 BẢNG THÔNG BÁO";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff9966, #ff5e62);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 16px;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
 
-        a:hover {
-            background: #3949AB;
-            transform: translateY(-3px);
-        }
-    </style>
+    /* Tuần */
+    .week {
+      margin-bottom: 15px;
+    }
+
+    .week button {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      backdrop-filter: blur(10px);
+    }
+
+    .week button:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateX(5px);
+    }
+
+    /* Nội dung */
+    .content {
+      display: none;
+      margin-top: 10px;
+      padding-left: 10px;
+    }
+
+    .content a {
+      display: block;
+      padding: 12px;
+      margin: 8px 0;
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 4px solid #ff5e62;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-size: 15px;
+    }
+
+    .content a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateX(10px);
+      border-left: 4px solid #ff9966;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="menu">
-        <h2>📚 Menu Bài Tập</h2>
+  <div class="menu">
+    <h2>📚 Menu Bài Tập</h2>
+
+    <div class="week">
+      <button onclick="toggleContent('week1', this)">
+        📘 Tuần 1 <span class="arrow">▶</span>
+      </button>
+      <div class="content" id="week1">
         <a href="Bai1.php">Bài 1</a>
         <a href="Bai2.php">Bài 2</a>
         <a href="Bai3_pheptinh.php">Bài 3</a>
         <a href="Bai4_index.php">Bài 4</a>
+      </div>
     </div>
+
+    <div class="week">
+      <button onclick="toggleContent('week2', this)">
+        📗 Tuần 2 <span class="arrow">▶</span>
+      </button>
+      <div class="content" id="week2">
+        <a href="btap.html">Bài Tập</a>
+        <a href="btapvn.php">Bài Tập Về Nhà</a>
+      </div>
+    </div>
+
+    <div class="week">
+      <button onclick="toggleContent('week3', this)">
+        📕 Tuần 3 <span class="arrow">▶</span>
+      </button>
+      <div class="content" id="week3">
+        <a href="#">Đang cập nhật...</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(id, btn) {
+      // Ẩn tất cả
+      document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.arrow').forEach(ar => ar.classList.remove('rotate'));
+
+      // Hiện phần được chọn
+      const content = document.getElementById(id);
+      const arrow = btn.querySelector('.arrow');
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+        arrow.classList.add('rotate');
+      }
+    }
+  </script>
 </body>
 
 </html>
